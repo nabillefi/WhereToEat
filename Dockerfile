@@ -1,11 +1,10 @@
 
 #stage1
-FROM node:10-alpine as build-step
+FROM node:latest as build-step
 RUN mkdir -p /app
 WORKDIR /app
 COPY package.json /app
-RUN npm uninstall popper.js && npm i @popperjs/core
-RUN npm install -f
+RUN npm install -g npm@7.0.15
 COPY . /app
 RUN npm run build --prod
 
