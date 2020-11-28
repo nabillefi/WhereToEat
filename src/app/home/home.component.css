@@ -1,0 +1,8 @@
+.images{
+    background-image: url('/assets/images/res1.jpg');
+    background-size: 100%;
+    }
+    
+.col-md-3{
+    color: rgba(253, 244, 226, 0.979);
+}

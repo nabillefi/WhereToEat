@@ -23,12 +23,12 @@ export class UpdateUserComponent implements OnInit {
     private toastr: ToastrService) {
 
     let formControls = {
-      firstname: new FormControl('',[
+      restauname: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      lastname: new FormControl('',[
+      adresse: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -44,8 +44,8 @@ export class UpdateUserComponent implements OnInit {
     this.updateUserForm = this.fb.group(formControls)
   }
 
-  get firstname() { return this.updateUserForm.get('firstname') }
-  get lastname() { return this.updateUserForm.get('lastname') }
+  get restauname() { return this.updateUserForm.get('restauname') }
+  get adresse() { return this.updateUserForm.get('adresse') }
   get phone() { return this.updateUserForm.get('phone') }
 
 
@@ -58,8 +58,8 @@ export class UpdateUserComponent implements OnInit {
         let user = res;
 
         this.updateUserForm.patchValue({
-          firstname : user.firstname,
-          lastname : user.lastname ,
+          restauListe : user.restauListe,
+          adresse : user.adresse ,
           phone : user.phone
         })
         
@@ -74,13 +74,13 @@ export class UpdateUserComponent implements OnInit {
   updateUser() {
     let data = this.updateUserForm.value;
     let idUser = this.route.snapshot.params.id;
-    let user = new User(data.firstname,data.lastname,null,data.phone,null,idUser);
+    let user = new User(data.restauname,data.adresse,null,data.phone,null,idUser);
 
     this.userService.updateUser(user).subscribe(
       res=>{
         this.toastr.warning(res.message);
 
-        this.router.navigate(['/people-list']);
+        this.router.navigate(['/restaulist']);
       },
       err=>{
         console.log(err);

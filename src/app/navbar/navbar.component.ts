@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   
-  imageUrl = "assets/images/formalab.png";
+  imageUrl = "assets/images/logo.jpg";
 
   isLoggedIn : Boolean ;
 

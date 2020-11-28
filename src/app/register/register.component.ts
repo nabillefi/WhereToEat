@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
     ) {
 
     let formControls = {
-      firstname: new FormControl('',[
+      restauname: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      lastname: new FormControl('',[
+      adresse: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -54,8 +54,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(formControls)
   }
 
-  get firstname() { return this.registerForm.get('firstname') }
-  get lastname() { return this.registerForm.get('lastname') }
+  get restauname() { return this.registerForm.get('restauname') }
+  get adresse() { return this.registerForm.get('adresse') }
   get phone() { return this.registerForm.get('phone') }
   get email() { return this.registerForm.get('email') }
   get password() { return this.registerForm.get('password') }
@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
     let isLoggedIn = this.userService.isLoggedIn();
 
     if (isLoggedIn) {
-      this.router.navigate(['/people-list']);
+      this.router.navigate(['/restaulist']);
     } 
   }
 
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
 
     let data = this.registerForm.value;
 
-    let user = new User(data.firstname,data.lastname,data.email,data.phone,data.password);
+    let user = new User(data.restauname,data.adresse,data.email,data.phone,data.password);
 
     this.userService.registerAdmin(user).subscribe(
       res=>{

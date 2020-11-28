@@ -23,12 +23,12 @@ export class AddUserComponent implements OnInit {
     ) {
 
     let formControls = {
-      firstname: new FormControl('',[
+      restauname: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      lastname: new FormControl('',[
+      adresse: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -44,8 +44,8 @@ export class AddUserComponent implements OnInit {
     this.addUserForm = this.fb.group(formControls)
   }
 
-  get firstname() { return this.addUserForm.get('firstname') }
-  get lastname() { return this.addUserForm.get('lastname') }
+  get restauname() { return this.addUserForm.get('restauname') }
+  get adresse() { return this.addUserForm.get('adresse') }
   get phone() { return this.addUserForm.get('phone') }
 
 
@@ -55,13 +55,13 @@ export class AddUserComponent implements OnInit {
   addUser() {
     let data = this.addUserForm.value;
 
-    let user = new User(data.firstname,data.lastname,null,data.phone);
+    let user = new User(data.restauname,data.adresse,null,data.phone);
 
     this.userSerivce.addUser(user).subscribe(
       res=>{
         
         this.toastr.success(res.message);
-        this.router.navigate(['/people-list']);
+        this.router.navigate(['/restaulist']);
       },
       err=>{
         console.log(err);

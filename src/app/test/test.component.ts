@@ -13,7 +13,7 @@ export class TestComponent implements OnInit {
   constructor(private fb: FormBuilder) {
 
     let formControls = {
-      firstname : new FormControl('',[
+      restauname : new FormControl('',[
         Validators.required,
         Validators.pattern("[a-z .'-]+"),
         Validators.minLength(2)
@@ -24,8 +24,8 @@ export class TestComponent implements OnInit {
 
   }
 
-  get firstname(){
-    return this.myForm.get('firstname');
+  get restauname(){
+    return this.myForm.get('restauname');
   }
 
   ngOnInit(): void {

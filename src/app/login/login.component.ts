@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     let isLoggedIn = this.userService.isLoggedIn();
 
     if (isLoggedIn) {
-      this.router.navigate(['/people-list']);
+      this.router.navigate(['/restaulist']);
     } 
   }
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         let token = res.token;
         localStorage.setItem("myToken",token);
-        this.router.navigate(['/people-list']);
+        this.router.navigate(['/restaulist']);
       },
       err=>{
         console.log(err);

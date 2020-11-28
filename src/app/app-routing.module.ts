@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { PeopleListComponent } from './people-list/people-list.component';
 import { TestComponent } from './test/test.component';
 import { Page404Component } from './page404/page404.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AuthGuard } from './auth.guard';
+import { RestaulistComponent } from './restaulist/restaulist.component';
 
 
 const routes: Routes = [
@@ -25,9 +25,9 @@ const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'people-list',
-    component:PeopleListComponent,
-    canActivate:[AuthGuard]
+    path:'restaulist',
+    component:RestaulistComponent,
+    
   },
   {
     path:'add-user',

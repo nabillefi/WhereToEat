@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <button class="btn btn-primary my-3" [routerLink]="['/people-list']">Back</button>
+            <button class="btn btn-primary my-3" [routerLink]="['/restaulist']">Back</button>
             <hr>
             <h1>Add User</h1>
         </div>
@@ -10,22 +10,22 @@
     <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="firstname">Firstname :</label>
-                <input type="text" name="firstname" id="firstname" formControlName="firstname" class="form-control">
-                <div *ngIf="firstname.touched && firstname.invalid">
-                    <small *ngIf="firstname.errors.required" class="text-danger">Firstname is required<br></small>
-                    <small *ngIf="firstname.errors.pattern" class="text-danger">Invalid Firstname<br></small>
-                    <small *ngIf="firstname.errors.minlength" class="text-danger">Firstname must contain two characters at least</small>
+                <label for="restauname">Restaurant name :</label>
+                <input type="text" name="restauname" id="restauname" formControlName="restauname" class="form-control">
+                <div *ngIf="restauname.touched && restauname.invalid">
+                    <small *ngIf="restauname.errors.required" class="text-danger">Restaurant name  is required<br></small>
+                    <small *ngIf="restauname.errors.pattern" class="text-danger">Invalid Restaurant name <br></small>
+                    <small *ngIf="restauname.errors.minlength" class="text-danger">Restaurant name  must contain two characters at least</small>
                 </div>
             </div>
 
             <div class="form-group col-6">
-                <label for="lastname">Lastname :</label>
-                <input type="text" name="lastname" id="lastname" formControlName="lastname" class="form-control">
-                <div *ngIf="lastname.touched && lastname.invalid">
-                    <small *ngIf="lastname.errors.required" class="text-danger">Lastname is required<br></small>
-                    <small *ngIf="lastname.errors.pattern" class="text-danger">Invalid Lastname<br></small>
-                    <small *ngIf="lastname.errors.minlength" class="text-danger">Lastname must contain two characters at least</small>
+                <label for="adresse">adresse :</label>
+                <input type="text" name="adresse" id="adresse" formControlName="adresse" class="form-control">
+                <div *ngIf="adresse.touched && adresse.invalid">
+                    <small *ngIf="adresse.errors.required" class="text-danger">adresse is required<br></small>
+                    <small *ngIf="adresse.errors.pattern" class="text-danger">Invalid adresse<br></small>
+                    <small *ngIf="adresse.errors.minlength" class="text-danger">adresse must contain two characters at least</small>
                 </div>
             </div>
         </div>
