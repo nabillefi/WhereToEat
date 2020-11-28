@@ -14,13 +14,13 @@ RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 RUN npm install -g ts-node yargs dotenv typescript@2.4.2
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+RUN npm i -f && mkdir /ng-app && cp -R ./node_modules ./ng-app
 WORKDIR /ng-app
 COPY . .
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN ts-node ./scripts/set-env.ts --environment=prod #actually this is defined as a script in package.json, let's add it here so things would make sense.
+RUN ts-node ./scripts/set-env.ts --environment=prod 
+#actually this is defined as a script in package.json, let's add it here so things would make sense.
 RUN npm run build
-
 
 ### STAGE 2: Setup ###
 
