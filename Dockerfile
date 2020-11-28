@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install -g
 COPY . /app
-RUN npm run build --prod
+RUN ng build --prod
 
 
 #stage2
