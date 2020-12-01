@@ -28,7 +28,7 @@ export class UpdateUserComponent implements OnInit {
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      adresse: new FormControl('',[
+      Address: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -45,7 +45,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   get restauname() { return this.updateUserForm.get('restauname') }
-  get adresse() { return this.updateUserForm.get('adresse') }
+  get Address() { return this.updateUserForm.get('Address') }
   get phone() { return this.updateUserForm.get('phone') }
 
 
@@ -59,7 +59,7 @@ export class UpdateUserComponent implements OnInit {
 
         this.updateUserForm.patchValue({
           restauListe : user.restauListe,
-          adresse : user.adresse ,
+          Address : user.Address ,
           phone : user.phone
         })
         
@@ -74,7 +74,7 @@ export class UpdateUserComponent implements OnInit {
   updateUser() {
     let data = this.updateUserForm.value;
     let idUser = this.route.snapshot.params.id;
-    let user = new User(data.restauname,data.adresse,null,data.phone,null,idUser);
+    let user = new User(data.restauname,data.Address,null,data.phone,null,idUser);
 
     this.userService.updateUser(user).subscribe(
       res=>{

@@ -12,20 +12,20 @@ export class RestaulistComponent implements OnInit {
     {
       id: 1,
       restauname: "Casa Del Gelato",
-      adresse: "Avenue 14 janvier 2011 khezama Est",
+      Address: "Avenue 14 janvier 2011 khezama Est",
       phone: "73270650",
     },
     {
       id: 2,
       restauname: "Mio Mondo",
-      adresse: "route touristique khezema 4057, Boulevard du 14 Janvier",
+      Address: "route touristique khezema 4057, Boulevard du 14 Janvier",
       phone: "73243273",
 
     },
     {
       id: 3,
       restauname: "Le Saloon",
-      adresse: "Boulevard du 14 Janvier, Sousse",
+      Address: "Boulevard du 14 Janvier, Sousse",
       phone: "50690260",
 
     },

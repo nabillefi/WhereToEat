@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      adresse: new FormControl('',[
+      Address: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
   }
 
   get restauname() { return this.registerForm.get('restauname') }
-  get adresse() { return this.registerForm.get('adresse') }
+  get Address() { return this.registerForm.get('Address') }
   get phone() { return this.registerForm.get('phone') }
   get email() { return this.registerForm.get('email') }
   get password() { return this.registerForm.get('password') }
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
 
     let data = this.registerForm.value;
 
-    let user = new User(data.restauname,data.adresse,data.email,data.phone,data.password);
+    let user = new User(data.restauname,data.Address,data.email,data.phone,data.password);
 
     this.userService.registerAdmin(user).subscribe(
       res=>{

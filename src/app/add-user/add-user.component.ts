@@ -28,7 +28,7 @@ export class AddUserComponent implements OnInit {
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      adresse: new FormControl('',[
+      Address: new FormControl('',[
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
   }
 
   get restauname() { return this.addUserForm.get('restauname') }
-  get adresse() { return this.addUserForm.get('adresse') }
+  get Address() { return this.addUserForm.get('Address') }
   get phone() { return this.addUserForm.get('phone') }
 
 
@@ -55,7 +55,7 @@ export class AddUserComponent implements OnInit {
   addUser() {
     let data = this.addUserForm.value;
 
-    let user = new User(data.restauname,data.adresse,null,data.phone);
+    let user = new User(data.restauname,data.Address,null,data.phone);
 
     this.userSerivce.addUser(user).subscribe(
       res=>{
