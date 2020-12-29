@@ -1,0 +1,6 @@
+machine api.heroku.com
+  login nabillafi1995@gmail.com
+  password 97fcf2f8-0d39-4258-98f0-8b716b4c3e3b
+machine git.heroku.com
+  login nabillafi1995@gmail.com
+  password 97fcf2f8-0d39-4258-98f0-8b716b4c3e3b

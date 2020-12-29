@@ -1,27 +1,23 @@
+image : docker:latest
+
+services:
+  - docker:dind
+
 variables:
-    TEST_NAME: registry.gitlab.com/nabillefi/whertoeat:$CI_COMMIT_REF_NAME
+    DOCKER_DRIVER: overlay
 
 stages:
-    - build
-    - run
-    - deploy
+    - devloppement
 
-build_docker_images:
-    stage: build
+devloppement:
+    stage : devloppement
     script:
-        - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
-        - docker build -t $TEST_NAME .
-        - docker push $TEST_NAME
-    tags:
-        - build
-run_docker_images:
-    stage: run
-    script:
-        - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
-        - docker pull $TEST_NAME
-        - docker kill $(docker ps -q) || true
-        - docker rm $(docker ps -a -q) || true
-        - docker run -dt -p 8090:80 --name gitlabCICDContainer $TEST_NAME
-    tags:
-        - run
-
+         - echo -e " Start Building Docker image from Docker file ..  "
+         - docker build -t $HEROKU_APP .
+         - echo -e "\n build complete\n\n Start pushing image to registry.heroku.com ..."
+         - docker login --username=_ -p $HEROKU_TOKEN registry.heroku.com
+         - docker push $HEROKU_APP
+         - echo -e " push complete ."
+         - echo -e " Start pushing the app to the developpement server .. "
+         - docker run  --rm  -e HEROKU_API_KEY=$HEROKU_TOKEN wingrunr21/alpine-heroku-cli container:release web --app wheretoeat1
+         - echo -e " complete"

@@ -1,16 +1,14 @@
-
-FROM node:12.16.1-alpine As builder
-
+FROM trion/ng-cli as builder
 WORKDIR /app
-
-COPY package.json .
-
-RUN npm i -g
-
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+RUN npm ci  --debug
 COPY . .
-
-RUN npm run build --prod
+RUN ng build --prod
 
 FROM nginx:1.15.8-alpine
 
 COPY --from=builder /app/dist/* /usr/share/nginx/html
+
+
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
